@@ -1,0 +1,16 @@
+.Signin{
+    height: 100vh;
+    width: 210vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.formContainer{
+    opacity: 0.9;
+    
+    width: 30%;
+    margin: 0px auto;
+    padding:20px;
+
+}
