@@ -38,7 +38,7 @@ export default function SigninDoc() {
     <div className="Signin">
       <div className="formContainer">
         <form>
-        <label>Login</label>
+        <label>SingIn</label>
 
           <br />
 

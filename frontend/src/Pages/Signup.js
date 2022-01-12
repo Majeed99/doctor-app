@@ -44,7 +44,7 @@ function Signup() {
           <br />
           <input
             type="text"
-            placeholder="name"
+            placeholder="Name"
             onChange={(e) => setName(e.target.value)}
             required
           />
@@ -68,7 +68,7 @@ function Signup() {
             SignUp
           </button>
         </form>
-
+          <br/>
         <Link to="/signupDoctor">
           {" "}
           <h6>Register as Doctor</h6>

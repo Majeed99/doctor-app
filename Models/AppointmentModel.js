@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-// const todayDate =  moment().utcOffset(0, true).format();
 
 const AppointmentSchema = new Schema({
   date: {
@@ -22,6 +21,9 @@ const AppointmentSchema = new Schema({
     type: String,
   },
   reasonForAppointment: {
+    type: String,
+  },
+  AppointmentId: {
     type: String,
   },
 });

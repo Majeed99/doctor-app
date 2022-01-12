@@ -4,15 +4,21 @@ const router = express.Router();
 
 router.use(express.json());
 
+// GET DOCTORS
+
 router.get("/allDoctors", async (req, res) => {
   const Doctors = await Doctor.find();
   res.send(Doctors);
 });
 
+// GET SPECIFIC DOCTOR
+
 router.get("/:id", async (req, res) => {
   const Doctor = await Doctor.findById(req.params.id);
   res.send(Doctor);
 });
+
+// UPDATE DOCTOR
 
 router.put("/updateDoctor/:id", async (req, res) => {
   const updateDoctor = await Doctor.findByIdAndUpdate(req.params.id, {
@@ -21,6 +27,7 @@ router.put("/updateDoctor/:id", async (req, res) => {
   res.send(updateDoctor);
 });
 
+// DELETE DOCTOR
 
 router.delete("/deleteDoctor/:id", async (req, res) => {
   const deleteDoctor = await Doctor.findByIdAndRemove(req.params.id);
@@ -67,6 +74,14 @@ router.post("/signIn", async (req, res) => {
     res.send("invalid email/password");
     return;
   }
+});
+
+// GET DOCTOR APPOINTMENT
+
+router.get("/allAppointment/:doctorId", async (req, res) => {
+  const _id = req.params.doctorId;
+  const Appointments = await Doctor.findOne({ _id });
+  res.send(Appointments);
 });
 
 module.exports = router;
