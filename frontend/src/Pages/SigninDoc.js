@@ -4,21 +4,29 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./SigninStyle.css";
 
-export default function Signin() {
+export default function SigninDoc() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const nav = useNavigate();
   
   
   const Login = () => {
 
-    const LoginUser = {
+    const LoginDoc = {
       email: email,
       password: password
     };
-    axios.post('/api/users/signIn',LoginUser)
+    axios.post('/api/doctor/signIn',LoginDoc)
     .then((res)=>{
-      console.log('Hi');
+      console.log(res);
+
+        if (res.data!=="invalid email/password" ) {
+            nav("/doctor");
+          } else {
+            setErrorMessage(res.data);
+            
+          }
     })
     
   
@@ -46,11 +54,11 @@ export default function Signin() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <br />
-          <button type="submit" className="btn" id="btn" onClick={()=>Login()}>SignIn</button>
 
         </form>
+        <button type="submit" className="btn" id="btn" onClick={()=>Login()}>SignIn</button>
 
-        <Link to = "/SigninDoc"><h6>sign in as Doctor</h6></Link>
+
 
       </div>
     </div>

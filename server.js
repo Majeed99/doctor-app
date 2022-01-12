@@ -11,14 +11,12 @@ dotenv.config();
 // Router
 
 const doctorRoutes = require("./Routes/doctorRoute");
-// const appointmentRoutes = require("./Routes/appointmentRoutes");
 const usersRouter = require("./Routes/userRoute");
 
 // USE ROUTERS WITH PATH
 
 app.use(express.static("frontend/build"));
 app.use("/api/doctor", doctorRoutes);
-// app.use("/api/appointment", appointmentRoutes);
 app.use("/api/users", usersRouter);
 app.use("/home", (req, res) => {
   res.send("Welcome to the Doctor App");

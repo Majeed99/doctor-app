@@ -4,29 +4,24 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./SigninStyle.css";
 
-function Signup() {
+function SignUpDoctor() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const reg = () => {
-    const SignupUser = {
-      name: name,
-      email: email,
-      password: password,
-    };
-  };
 
   function checkAndSubmit() {
-    axios.post("/api/users/register", { name, email, password }).then((res) => {
-      console.log(res.data);
-      if (res.data === "done") {
-        navigate("/signin");
-      } else {
-        setErrorMessage(res.data);
-      }
-    });
+    axios
+      .post("/api/doctor/DoctorRegister", { name, email, password })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data === "done") {
+          navigate("/signin");
+        } else {
+          setErrorMessage(res.data);
+        }
+      });
   }
 
   return (
@@ -68,14 +63,9 @@ function Signup() {
             SignUp
           </button>
         </form>
-
-        <Link to="/signupDoctor">
-          {" "}
-          <h6>Register as Doctor</h6>
-        </Link>
       </div>
     </div>
   );
 }
 
-export default Signup;
+export default SignUpDoctor;
